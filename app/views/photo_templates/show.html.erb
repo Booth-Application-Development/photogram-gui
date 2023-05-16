@@ -1,1 +1,199 @@
-<h1> Photo details </h1>
+<h1> Photo Details </h1>
+
+
+<dl>
+  <dt>Image</dt>
+  <dd>
+    <img src="<%= @the_photo.image %>">
+  </dd>
+
+  <dt>Caption</dt>
+  <dd>
+    <p><%= @the_photo.caption %></p>
+  </dd>
+
+  <dt>Owner</dt>
+  <dd>
+    <%= @the_photo.poster.username %>
+  </dd>
+
+  <dt>Posted</dt>
+  <dd>
+    <%= @the_photo.created_at %>
+  </dd>
+
+  <dt>Edit photo</dt>
+  <dd>
+    <form action="/update_photo/<%= @the_photo.id %>">
+      <label for="browser_image">Image</label>
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="<% @the_photo.image %>">
+
+      <label for="browser_caption">Caption</label>
+      <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo..."><%= @the_photo.caption %></textarea>
+
+      <button>Update photo</button>
+    </form>
+  </dd>
+
+  <dt>Delete photo</dt>
+  <dd>
+    <a href="/delete_photo/<%= @the_photo.id %>;">
+      Delete this photo
+    </a>
+  </dd>
+</dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tbody><tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+
+<% @the_photo.comments.each do |a_comment| %>
+  <tr>
+    <td>
+      <%= a_comment.commenter %>
+    </td>
+
+    <td>
+       <%= a_comment.body %>
+    </td>
+
+    <td>
+       <%= a_comment.created_at %>
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td>
+      roselee
+    </td>
+
+    <td>
+      Know how to listen, and you will profit even from those who talk badly.
+    </td>
+
+    <td>
+      2019-04-27 05:00:39 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      galen
+    </td>
+
+    <td>
+      Most people would rather give than get affection.
+    </td>
+
+    <td>
+      2019-04-29 02:11:53 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      galen
+    </td>
+
+    <td>
+      A few vices are sufficient to darken many virtues.
+    </td>
+
+    <td>
+      2019-04-29 19:00:58 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      robin
+    </td>
+
+    <td>
+      The mind is not a vessel to be filled but a fire to be kindled.
+    </td>
+
+    <td>
+      2019-04-29 22:16:30 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      jolie
+    </td>
+
+    <td>
+      Beware the barrenness of a busy life.
+    </td>
+
+    <td>
+      2019-04-29 16:24:49 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      trina
+    </td>
+
+    <td>
+      It is impossible to begin to learn that which one thinks one already knows.
+    </td>
+
+    <td>
+      2019-04-28 05:55:11 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      diego
+    </td>
+
+    <td>
+      The mind is not a vessel to be filled but a fire to be kindled.
+    </td>
+
+    <td>
+      2019-04-27 17:29:48 UTC
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      augustine
+    </td>
+
+    <td>
+      Only the educated are free.
+    </td>
+
+    <td>
+      2019-04-28 15:58:31 UTC
+    </td>
+  </tr>
+  
+</tbody></table>
+
+<h3>Add a new comment</h3>
+
+<form action="/insert_comment_record">
+  <label for="browser_photo_id">Photo ID</label>
+  <input id="browser_photo_id" type="text" value="777" name="input_photo_id">
+
+  <label for="browser_author_id">Author ID</label>
+  <input id="browser_author_id" type="text" name="input_author_id">
+
+  <label for="browser_comment">Comment</label>
+  <textarea id="browser_comment" name="input_body" placeholder="Enter a comment..."></textarea>
+
+  <button>Add comment</button>
+</form>
+
+  
